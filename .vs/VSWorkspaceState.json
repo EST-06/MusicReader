@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\musicreader",
+    "\\musicreader\\src",
+    "\\musicreader\\src\\main",
+    "\\musicreader\\src\\main\\java",
+    "\\musicreader\\src\\main\\java\\com",
+    "\\musicreader\\src\\main\\java\\com\\est",
+    "\\musicreader\\src\\main\\java\\com\\est\\musicreader",
+    "\\musicreader\\src\\main\\java\\com\\est\\musicreader\\models"
+  ],
+  "SelectedNode": "\\musicreader\\src\\main\\java\\com\\est\\musicreader\\models\\ytSongsInfoDTO.java",
+  "PreviewInSolutionExplorer": false
+}

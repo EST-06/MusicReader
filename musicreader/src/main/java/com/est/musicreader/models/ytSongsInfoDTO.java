@@ -1,19 +1,19 @@
 package com.est.musicreader.models;
 
 public class ytSongsInfoDTO {
-    private String song;
-    private String artist;
+    private String title;
+    private String videoOwnerChannelTitle;
 
-    public void setSong(String song){
-        this.song = song;
+    public ytSongsInfoDTO(String song, String artist) {
+        this.title = song;
+        this.videoOwnerChannelTitle = artist;
     }
-    public void setArtist(String artist){
-        this.artist = artist;
+
+    public String getVideoOwnerChannelTitle() {
+        return videoOwnerChannelTitle;
     }
-    public String getArtist(){
-        return artist;
-    }
-    public String getSong(){
-        return song;
+
+    public String getTitle() {
+        return title;
     }
 }

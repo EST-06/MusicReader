@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.util.UriComponentsBuilder;
 
-
 import reactor.core.publisher.Mono;
 
 @Service
@@ -30,7 +29,7 @@ public class createPlaylist {
     }
 
     private String b64(String sha256) {
-        return  Base64.getEncoder().encodeToString(sha256.getBytes(StandardCharsets.UTF_8));
+        return Base64.getEncoder().encodeToString(sha256.getBytes(StandardCharsets.UTF_8));
     }
 
     private Mono<String> s256() {
@@ -55,5 +54,9 @@ public class createPlaylist {
                     .build()
                     .toUriString();
         });
+    }
+
+    public void getTokens(String code){
+         
     }
 }

@@ -1,4 +1,4 @@
-package com.est.musicreader.models;
+package com.est.musicreader.dtos;
 
 public class ytSongsInfoDTO {
     private String title;
@@ -12,7 +12,7 @@ public class ytSongsInfoDTO {
     public String getVideoOwnerChannelTitle() {
         return videoOwnerChannelTitle;
     }
-
+    
     public String getTitle() {
         return title;
     }

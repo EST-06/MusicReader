@@ -13,6 +13,9 @@ import java.net.URI;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 @RestController
 @RequestMapping("/spotify")
@@ -26,17 +29,20 @@ public class spotifyController {
 
     @GetMapping("/create")
     public Mono<ResponseEntity<String>> create() {
-        return createPlaylist.getAuthorizationUrl()
+        return createPlaylist.getAuthorizationCode()
                 .map(url -> ResponseEntity
                         .status(HttpStatus.FOUND)
                         .location(URI.create(url))
                         .build());
     }
 
-    @GetMapping("/callback")
-    public String getMethodName(@RequestParam String code) {        
-        return code;
+    @PostMapping("/callback")
+    public Mono<ResponseEntity> getTokens(@RequestParam String code) {        
+        return createPlaylist.getAccesTokens(code);
     }
+
+    
+    
     @GetMapping("/ping")
     public String ping() {
         return "OK SSL";

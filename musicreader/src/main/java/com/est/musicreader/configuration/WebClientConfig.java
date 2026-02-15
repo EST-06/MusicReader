@@ -13,6 +13,6 @@ public class WebClientConfig {
 
     @Bean
     public WebClient spotifyWebClient(){
-        return WebClient.builder().baseUrl("https://accounts.spotify.com").build();
+        return WebClient.builder().baseUrl("https://accounts.spotify.com/api").build();
     }
 }

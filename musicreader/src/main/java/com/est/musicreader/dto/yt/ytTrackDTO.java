@@ -1,16 +1,16 @@
-package com.est.musicreader.models;
+package com.est.musicreader.dtos;
 
 import java.util.ArrayList;
 
 
 public class ytTrackDTO {    
-    private ArrayList<ytSnippet> items;
+    private ArrayList<ytSnippetDTO> items;
     private String nextPageToken;
 
-    public ArrayList<ytSnippet> getItems(){
+    public ArrayList<ytSnippetDTO> getItems(){
         return items;
     }
-    public void setItems(ArrayList<ytSnippet> items){
+    public void setItems(ArrayList<ytSnippetDTO> items){
         this.items = items;
     }   
     
@@ -20,7 +20,5 @@ public class ytTrackDTO {
     
     public String getNextPageToken(){
         return nextPageToken;
-    }
-
-   
+    } 
 }

@@ -1,6 +1,6 @@
-package com.est.musicreader.models;
+package com.est.musicreader.dtos;
 
-public class ytSnippet {
+public class ytSnippetDTO {
     private ytSongsInfoDTO snippet;
 
     public ytSongsInfoDTO getSnippet(){

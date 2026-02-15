@@ -7,6 +7,7 @@ import java.util.Random;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -42,7 +43,7 @@ public class createPlaylist {
                 .toString()));
     }
 
-    public Mono<String> getAuthorizationUrl() {
+    public Mono<String> getAuthorizationCode() {
         return s256().map(data -> {
             String code = b64(data);
             return UriComponentsBuilder.fromUriString("https://accounts.spotify.com/authorize")
@@ -56,7 +57,14 @@ public class createPlaylist {
         });
     }
 
-    public void getTokens(String code){
-         
+    public Mono<ResponseEntity> getAccesTokens(String code){
+        return webClient.post().uri(
+            uriBuilder -> {return uriBuilder.path("/token")
+            .queryParam("gran_type", "authorization_code")
+            .queryParam("redirect_uri", redirectUri)
+            .queryParam("client_id", clientID)
+            .queryParam("code_verifier", code).build();
+    }).header("Content-Type", "application/x-www-form-urlencoded").retrieve()
+    .bodyToMono(ResponseEntity.class);
     }
 }

@@ -1,4 +1,4 @@
-package com.est.musicreader.dtos;
+package com.est.musicreader.dto.yt;
 
 import java.util.ArrayList;
 

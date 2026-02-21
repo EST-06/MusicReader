@@ -1,5 +1,7 @@
 package com.est.musicreader.handler;
 
+import java.security.NoSuchAlgorithmException;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -14,6 +16,15 @@ public class ExceptionsHandler {
 
     @ExceptionHandler(Exception.class)
     public Mono<ResponseEntity<ErrorDTO>> internalError(Exception ex){
+        ErrorDTO error = new ErrorDTO(HttpStatus.INTERNAL_SERVER_ERROR.value()
+        , "Internal Error in: " + ex.getClass().getName()
+        , ex.getMessage().toString());
+
+        return Mono.just(ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR.value()).body(error));
+    }
+
+    @ExceptionHandler(NoSuchAlgorithmException.class)
+    public Mono<ResponseEntity<ErrorDTO>> badHashSHA256(Exception ex){
         ErrorDTO error = new ErrorDTO(HttpStatus.INTERNAL_SERVER_ERROR.value()
         , "Internal Error in: " + ex.getClass().getName()
         , ex.getMessage().toString());

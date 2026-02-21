@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.est.musicreader.dtos.ytSongsInfoDTO;
+import com.est.musicreader.dto.yt.ytSongsInfoDTO;
 import com.est.musicreader.service.youtube.ytService;
 
 import reactor.core.publisher.Mono;

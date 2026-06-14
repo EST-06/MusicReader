@@ -15,9 +15,8 @@ import java.security.NoSuchAlgorithmException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-
-
-
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 
 @RestController
@@ -30,8 +29,8 @@ public class spotifyController {
         this.oauthSpotify = createPlaylist;
     }
 
-    @GetMapping("/create")
-    public Mono<ResponseEntity<String>> create() throws NoSuchAlgorithmException {
+    @GetMapping("/authorize")
+    public Mono<ResponseEntity<String>> authorize() throws NoSuchAlgorithmException {
         return oauthSpotify.getAuthorizationCode()
                 .map(url -> ResponseEntity
                         .status(HttpStatus.FOUND)
@@ -43,4 +42,12 @@ public class spotifyController {
     public Mono<AccessResponseDTO> getTokens(@RequestParam String code) {        
         return oauthSpotify.getAccesTokens(code);
     }
+
+    @PostMapping("/create")
+    public String create(@RequestBody String entity) {
+        //TODO: process POST request
+        
+        return entity;
+    }
+    
 }
